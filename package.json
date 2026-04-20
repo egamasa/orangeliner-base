@@ -12,6 +12,8 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:web": "SITE_ID=web astro dev",
+    "dev:blog": "SITE_ID=blog astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
