@@ -1,0 +1,64 @@
+---
+import logo from '../assets/orangeliner_logo_2022_accent.svg';
+
+interface Props {
+  subTitle?: string;
+}
+
+const { subTitle } = Astro.props;
+const siteName = 'orangeliner.net';
+const altText = subTitle ? `${siteName} ${subTitle}` : siteName;
+
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links?: NavLink[];
+}
+
+const defaultLinks: NavLink[] = [
+  {
+    href: 'https://orangeliner.net/contents/',
+    label: 'Contents',
+  },
+  {
+    href: 'https://orangeliner.net/apps/',
+    label: 'Apps',
+  },
+  {
+    href: 'https://orangeliner.net/tools/',
+    label: 'Tools',
+  },
+  {
+    href: 'https://blog.orangeliner.net',
+    label: 'Blog',
+  },
+];
+
+const { links = defaultLinks } = Astro.props;
+
+const currentOrigin = Astro.site?.origin ?? '';
+
+function resolve(url: string): string {
+  if (currentOrigin && url.startsWith(currentOrigin)) {
+    return new URL(url).pathname;
+  }
+  return url;
+}
+---
+
+<nav>
+  <div>
+    <a href="/">
+      <img src={logo.src} alt={altText}>
+      {subTitle && <span>{subTitle}</span>}
+    </a>
+  </div>
+  <div>
+    {links.map((link) => (
+      <a href={resolve(link.href)}>{link.label}</a>
+    ))}
+  </div>
+</nav>
