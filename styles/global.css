@@ -90,3 +90,34 @@
   --color-code-bg: #27272c;
   --color-code-text: #e8e6e3;
 }
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+
+/* Sticky footer: keep footer at bottom even with short content */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background-color: var(--color-bg-body);
+  color: var(--color-text);
+}
+
+body > main {
+  flex: 1;
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+}
+
+footer a {
+  color: var(--color-footer-link);
+}
+
+footer a:hover {
+  color: var(--color-footer-link-hover);
+}
