@@ -49,16 +49,16 @@ function resolve(url: string): string {
 }
 ---
 
-<nav>
+<nav class="mx-auto flex w-full max-w-7xl items-center justify-between">
   <div>
-    <a href="/">
-      <img src={logo.src} alt={altText}>
-      {subTitle && <span>{subTitle}</span>}
+    <a href="/" class="flex items-center gap-2 p-3">
+      <img src={logo.src} alt={altText} class="h-8">
+      {subTitle && <span class="font-bold text-sm">{subTitle}</span>}
     </a>
   </div>
-  <div>
+  <div class="flex items-center text-lg p-0">
     {links.map((link) => (
-      <a href={resolve(link.href)}>{link.label}</a>
-    ))}
+        <a href={resolve(link.href)} class="p-3">{link.label}</a>
+      ))}
   </div>
 </nav>

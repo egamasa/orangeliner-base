@@ -108,6 +108,25 @@ body > main {
   flex: 1;
 }
 
+/* Header */
+header {
+  background-color: var(--color-header-bg);
+  color: var(--color-header-text);
+  box-shadow: 0 1px 0 var(--color-header-border);
+}
+
+header a,
+header button {
+  color: var(--color-header-text-90);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+header a:hover,
+header button:hover {
+  color: var(--color-header-text);
+  background-color: var(--color-header-bg-hover);
+}
+
 /* Footer */
 footer {
   background-color: var(--color-footer-bg);
