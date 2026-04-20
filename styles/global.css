@@ -102,10 +102,40 @@ body {
   min-height: 100svh;
   background-color: var(--color-bg-body);
   color: var(--color-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 body > main {
   flex: 1;
+}
+
+/* Typography: link prose colors to theme variables */
+.prose {
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: var(--color-text-strong);
+  --tw-prose-links: var(--color-link);
+  --tw-prose-bold: var(--color-text-strong);
+  --tw-prose-code: var(--color-code-text);
+  --tw-prose-pre-bg: var(--color-code-bg);
+  --tw-prose-pre-code: var(--color-code-text);
+  --tw-prose-quotes: var(--color-text-weak);
+}
+
+.prose :where(code):not(:where(pre *)) {
+  background-color: var(--color-code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.prose :where(pre) {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Header */
@@ -118,7 +148,9 @@ header {
 header a,
 header button {
   color: var(--color-header-text-90);
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
 header a:hover,

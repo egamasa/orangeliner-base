@@ -49,7 +49,7 @@ function resolve(url: string): string {
 }
 ---
 
-<nav class="mx-auto flex w-full max-w-7xl items-center justify-between">
+<nav class="flex items-center justify-between">
   <div>
     <a href="/" class="flex items-center gap-2 p-3">
       <img src={logo.src} alt={altText} class="h-8">
@@ -60,5 +60,64 @@ function resolve(url: string): string {
     {links.map((link) => (
         <a href={resolve(link.href)} class="p-3">{link.label}</a>
       ))}
+    <button
+      id="theme-toggle"
+      type="button"
+      class="p-3 cursor-pointer"
+      aria-label="テーマ切替"
+    >
+      <span id="theme-icon-light" class="hidden">☀️</span>
+      <span id="theme-icon-dark" class="hidden">🌙</span>
+    </button>
   </div>
 </nav>
+
+<script>
+const toggle = document.getElementById('theme-toggle');
+const iconLight = document.getElementById('theme-icon-light');
+const iconDark = document.getElementById('theme-icon-dark');
+if (!toggle || !iconLight || !iconDark)
+  throw new Error('Theme toggle elements not found');
+
+function getTheme(): string {
+  return localStorage.getItem('theme') || 'system';
+}
+
+function applyTheme(theme: string) {
+  const root = document.documentElement;
+  if (theme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (theme === 'light') {
+    root.setAttribute('data-theme', 'light');
+  } else {
+    root.removeAttribute('data-theme');
+  }
+  updateIcon();
+}
+
+function isDark(): boolean {
+  const theme = getTheme();
+  if (theme === 'dark') return true;
+  if (theme === 'light') return false;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function updateIcon() {
+  if (!iconLight || !iconDark) return;
+  if (isDark()) {
+    iconLight.classList.remove('hidden');
+    iconDark.classList.add('hidden');
+  } else {
+    iconLight.classList.add('hidden');
+    iconDark.classList.remove('hidden');
+  }
+}
+
+toggle.addEventListener('click', () => {
+  const next = isDark() ? 'light' : 'dark';
+  localStorage.setItem('theme', next);
+  applyTheme(next);
+});
+
+applyTheme(getTheme());
+</script>
