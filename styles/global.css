@@ -1,2 +1,92 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+/* ============================================================
+   Design Tokens (Overrides Tailwind v4 @theme)
+   ============================================================ */
+
+@theme {
+  /* Brand */
+  --color-primary: #ff6633;
+  --color-primary-hover: #e85725;
+
+  /* Header */
+  --color-header-bg: #ff6633;
+  --color-header-bg-hover: #e85725;
+  --color-header-text: #ffffff;
+  --color-header-text-90: #ffffffe6;
+  --color-header-text-70: #ffffffb3;
+  --color-header-border: #0000001a;
+
+  /* Footer */
+  --color-footer-bg: #162a3e;
+  --color-footer-text: #e0e7ed;
+  --color-footer-text-muted: #a8b8c8;
+  --color-footer-heading: #ffffff;
+  --color-footer-link: #8ec5ff;
+  --color-footer-link-hover: #ffffff;
+  --color-footer-border: #ffffff14;
+  --color-footer-divider: #ffffff1a;
+}
+
+/* Light theme */
+:root {
+  --color-primary-light: #fff0eb;
+  --color-primary-dark: #b8421a;
+  --color-bg-body: #fafaf8;
+  --color-surface-0: #ffffff;
+  --color-surface-1: #f5f4f1;
+  --color-surface-2: #eeedea;
+  --color-text: #2d2d2d;
+  --color-text-strong: #1a1a1a;
+  --color-text-weak: #6b6b6b;
+  --color-text-muted: #8c8c8c;
+  --color-link: #b8421a;
+  --color-link-hover: #8c3214;
+  --color-border: #dedbd6;
+  --color-border-hover: #c5c1ba;
+  --color-code-bg: #f5f4f1;
+  --color-code-text: #1a1a1a;
+}
+
+/* Dark theme (OS preference) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-primary-light: #3d2218;
+    --color-primary-dark: #ff9e80;
+    --color-link: #ff8a66;
+    --color-link-hover: #ffb8a0;
+    --color-bg-body: #1a1a1e;
+    --color-surface-0: #222226;
+    --color-surface-1: #27272c;
+    --color-surface-2: #303036;
+    --color-text: #e8e6e3;
+    --color-text-strong: #ffffff;
+    --color-text-weak: #a0a0a0;
+    --color-text-muted: #787878;
+    --color-border: #3a3a40;
+    --color-border-hover: #4e4e56;
+    --color-code-bg: #27272c;
+    --color-code-text: #e8e6e3;
+  }
+}
+
+/* Dark theme (manual toggle) */
+:root[data-theme='dark'] {
+  --color-primary-light: #3d2218;
+  --color-primary-dark: #ff9e80;
+  --color-link: #ff8a66;
+  --color-link-hover: #ffb8a0;
+  --color-bg-body: #1a1a1e;
+  --color-surface-0: #222226;
+  --color-surface-1: #27272c;
+  --color-surface-2: #303036;
+  --color-text: #e8e6e3;
+  --color-text-strong: #ffffff;
+  --color-text-weak: #a0a0a0;
+  --color-text-muted: #787878;
+  --color-border: #3a3a40;
+  --color-border-hover: #4e4e56;
+  --color-code-bg: #27272c;
+  --color-code-text: #e8e6e3;
+}
