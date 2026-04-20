@@ -108,7 +108,7 @@ body {
 }
 
 body > main {
-  flex: 1;
+  @apply mx-auto w-full max-w-7xl flex-1;
 }
 
 /* Typography: link prose colors to theme variables */
@@ -139,6 +139,10 @@ body > main {
 }
 
 /* Header */
+header nav {
+  @apply mx-auto w-full max-w-7xl;
+}
+
 header {
   background-color: var(--color-header-bg);
   color: var(--color-header-text);
