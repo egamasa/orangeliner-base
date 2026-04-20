@@ -21,6 +21,9 @@
       },
       "style": {
         "useConst": "warn"
+      },
+      "nursery": {
+        "useSortedClasses": "warn"
       }
     }
   },
