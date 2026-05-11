@@ -126,6 +126,7 @@ body > main {
   --tw-prose-pre-bg: var(--color-code-bg);
   --tw-prose-pre-code: var(--color-code-text);
   --tw-prose-quotes: var(--color-text-weak);
+  --tw-prose-hr: var(--color-border);
 }
 
 .prose :where(code):not(:where(pre *)) {
@@ -141,6 +142,10 @@ body > main {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+
+.prose :where(hr) {
+  border-top-width: 2px;
 }
 
 /* Header */
