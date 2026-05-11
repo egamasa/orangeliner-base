@@ -50,7 +50,7 @@
   --color-link-hover: #8c3214;
   --color-border: #dedbd6;
   --color-border-hover: #c5c1ba;
-  --color-code-bg: #f5f4f1;
+  --color-code-bg: #eeedea;
   --color-code-text: #1a1a1a;
 }
 
@@ -130,6 +130,7 @@ body > main {
 }
 
 .prose :where(code):not(:where(pre *)) {
+  font-weight: 400;
   background-color: var(--color-code-bg);
   padding: 0.15em 0.4em;
   border-radius: 0.25rem;
