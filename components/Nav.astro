@@ -1,20 +1,13 @@
 ---
 import logo from '../assets/orangeliner_logo_2022_accent.svg';
 
-interface Props {
-  subTitle?: string;
-}
-
-const { subTitle } = Astro.props;
-const siteName = 'orangeliner.net';
-const altText = subTitle ? `${siteName} ${subTitle}` : siteName;
-
 interface NavLink {
   href: string;
   label: string;
 }
 
 interface Props {
+  subTitle?: string;
   links?: NavLink[];
 }
 
@@ -37,7 +30,9 @@ const defaultLinks: NavLink[] = [
   },
 ];
 
-const { links = defaultLinks } = Astro.props;
+const { subTitle, links = defaultLinks } = Astro.props;
+const siteName = 'orangeliner.net';
+const altText = subTitle ? `${siteName} ${subTitle}` : siteName;
 
 const currentOrigin = Astro.site?.origin ?? '';
 
@@ -59,7 +54,7 @@ function resolve(url: string): string {
   <div class="flex items-center text-lg p-0">
     {links.map((link) => (
         <a href={resolve(link.href)} class="p-3">{link.label}</a>
-      ))}
+    ))}
     <button
       id="theme-toggle"
       type="button"
