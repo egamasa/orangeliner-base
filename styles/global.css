@@ -116,6 +116,10 @@ body > main {
   @apply mx-auto w-full max-w-7xl flex-1;
 }
 
+main.container {
+  @apply p-4 md:px-8;
+}
+
 /* Typography: link prose colors to theme variables */
 .prose {
   --tw-prose-body: var(--color-text);
@@ -127,6 +131,15 @@ body > main {
   --tw-prose-pre-code: var(--color-code-text);
   --tw-prose-quotes: var(--color-text-weak);
   --tw-prose-hr: var(--color-border);
+}
+
+.prose :where(h1) {
+  font-size: 2em;
+  @apply my-4;
+}
+
+.prose :where(h2) {
+  @apply mt-8 mb-4;
 }
 
 .prose :where(code):not(:where(pre *)) {
@@ -147,6 +160,7 @@ body > main {
 
 .prose :where(hr) {
   border-top-width: 2px;
+  @apply my-6;
 }
 
 /* Header */
