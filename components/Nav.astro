@@ -46,8 +46,8 @@ function resolve(url: string): string {
 
 <nav class="relative flex flex-wrap items-center justify-between">
   <div>
-    <a href="/" class="flex items-center gap-2 p-3">
-      <img src={logo.src} alt={altText} class="h-8">
+    <a href="/" class="flex items-center gap-2 p-3 md:px-8">
+      <img src={logo.src} alt={altText} class="h-6 md:h-8 w-auto max-w-[260px]">
       {subTitle && <span class="font-bold text-sm">{subTitle}</span>}
     </a>
   </div>
@@ -96,10 +96,10 @@ function resolve(url: string): string {
   <!-- Nav links -->
   <div
     id="nav-menu"
-    class="absolute top-full right-0 z-50 hidden border-t-2 border-[var(--color-header-border)] bg-[var(--color-header-bg)] md:relative md:flex md:items-center md:border-t-0 md:bg-transparent"
+    class="absolute top-full right-0 z-50 hidden border-t-2 border-[var(--color-header-border)] bg-[var(--color-header-bg)] md:relative md:flex md:items-center md:border-t-0 md:bg-transparent md:mr-8"
   >
     {links.map((link) => (
-      <a href={resolve(link.href)} class="block p-3 text-lg">{link.label}</a>
+      <a href={resolve(link.href)} class="block px-3 py-2 text-lg">{link.label}</a>
     ))}
     <button
       id="theme-toggle"
