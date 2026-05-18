@@ -1,0 +1,43 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    pubDate?: string;
+    updatedDate?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
+const pubDate = frontmatter.pubDate ? new Date(frontmatter.pubDate) : null;
+const updatedDate = frontmatter.updatedDate ? new Date(frontmatter.updatedDate) : null;
+---
+
+<BaseLayout title={title} description={description}>
+  <article itemscope itemtype="https://schema.org/Article">
+    <h1 itemprop="headline">{title}</h1>
+    <div class="flex gap-4">
+      {pubDate && (
+        <div>
+          <span>公開日：</span>
+          <time itemprop="datePublished" datetime={pubDate.toLocaleDateString('en-CA')}>
+            {pubDate.toLocaleDateString('ja-JP')}
+          </time>
+        </div>
+      )}
+      {updatedDate && (
+        <div>
+          <span>更新日：</span>
+          <time itemprop="dateModified" datetime={updatedDate.toLocaleDateString('en-CA')}>
+            {updatedDate.toLocaleDateString('ja-JP')}
+          </time>
+        </div>
+      )}
+    </div>
+    <hr>
+    <slot />
+  </article>
+</BaseLayout>
