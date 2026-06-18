@@ -2,6 +2,23 @@
 @import '@fontsource/ibm-plex-sans-jp/700.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+@plugin 'daisyui' {
+  themes:
+    emerald --default,
+    dim --prefersdark;
+}
+@plugin 'daisyui/theme' {
+  name: 'emerald';
+  default: true;
+  --color-primary: oklch(55% 0.2 30);
+  --color-primary-content: oklch(98% 0.01 30);
+}
+@plugin 'daisyui/theme' {
+  name: 'dim';
+  prefersdark: true;
+  --color-primary: oklch(70% 0.18 30);
+  --color-primary-content: oklch(20% 0.02 30);
+}
 
 /* ============================================================
    Design Tokens (Overrides Tailwind v4 @theme)
