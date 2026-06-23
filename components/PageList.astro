@@ -1,0 +1,57 @@
+---
+import type { MarkdownInstance } from 'astro';
+
+interface PageItem {
+  title: string;
+  description?: string;
+  url: string;
+  order?: number;
+}
+
+interface PageFrontmatter {
+  title: string;
+  description?: string;
+  order?: number;
+}
+
+interface Props {
+  /** Results of import.meta.glob('...', { eager: true }) for Markdown files */
+  mdModules?: Record<string, MarkdownInstance<PageFrontmatter>>;
+  /** Manually listed Astro pages */
+  astroItems?: PageItem[];
+}
+
+const { mdModules = {}, astroItems = [] } = Astro.props;
+
+const mdItems: PageItem[] = Object.entries(mdModules)
+  .filter(([, mod]) => typeof mod.frontmatter.title === 'string')
+  .map(([path, mod]) => ({
+    title: mod.frontmatter.title,
+    description: mod.frontmatter.description,
+    url: mod.url ?? path,
+    order: mod.frontmatter.order ?? Infinity,
+  }));
+
+const items = [
+  ...mdItems,
+  ...astroItems,
+].sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity));
+---
+
+{items.length > 0 && (
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+  {items.map((item) => {
+    const external = /^https?:\/\//.test(item.url);
+    return (
+      <a class="h-full no-underline" href={item.url} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+        <div class="card card-md h-full border-3 border-transparent bg-base-200 shadow-sm transition-colors hover:border-[var(--color-header-bg)]">
+          <div class="card-body">
+            <h2 class="card-title">{item.title}</h2>
+            {item.description && <p>{item.description}</p>}
+          </div>
+        </div>
+      </a>
+    );
+  })}
+</div>
+)}
