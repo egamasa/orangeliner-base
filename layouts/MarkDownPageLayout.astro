@@ -17,7 +17,7 @@ const updatedDate = frontmatter.updatedDate ? new Date(frontmatter.updatedDate) 
 ---
 
 <BaseLayout title={title} description={description}>
-  <article itemscope itemtype="https://schema.org/Article">
+  <article class="prose" itemscope itemtype="https://schema.org/Article">
     <h1 itemprop="headline">{title}</h1>
     <div class="flex gap-4">
       {pubDate && (
