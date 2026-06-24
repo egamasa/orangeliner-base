@@ -19,6 +19,9 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
     ],
+    define: {
+      'import.meta.env.SITE_ID': JSON.stringify(siteId),
+    },
   },
 
   markdown: {

@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "exports": {
     "./components/*": "./components/*",
+    "./config/*": "./config/*",
     "./layouts/*": "./layouts/*",
     "./styles/*": "./styles/*"
   },

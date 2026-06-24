@@ -1,4 +1,5 @@
 ---
+import { siteName } from '@config/site';
 import logo from '../assets/orangeliner_logo_2022_accent.svg';
 
 interface NavLink {
@@ -31,7 +32,6 @@ const defaultLinks: NavLink[] = [
 ];
 
 const { subTitle, links = defaultLinks } = Astro.props;
-const siteName = 'orangeliner.net';
 const altText = subTitle ? `${siteName} ${subTitle}` : siteName;
 
 const currentOrigin = Astro.site?.origin ?? '';
