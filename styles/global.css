@@ -74,6 +74,7 @@ main.container {
 
 /* Typography: link prose colors to theme variables */
 .prose {
+  max-width: none;
   --tw-prose-body: var(--color-base-content);
   --tw-prose-headings: var(--color-base-content);
   --tw-prose-links: var(--color-primary);
