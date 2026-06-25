@@ -139,3 +139,15 @@ footer a {
 footer a:hover {
   color: var(--color-footer-link-hover);
 }
+
+/* ============================================================
+   PageList Component
+   ============================================================ */
+
+.page-list-grid {
+  @apply grid grid-cols-1 gap-4 sm:grid-cols-2;
+}
+
+.page-list-card {
+  @apply card card-md h-full border-3 border-transparent bg-base-200 shadow-sm transition-colors hover:border-[var(--color-header-bg)];
+}

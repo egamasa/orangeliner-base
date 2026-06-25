@@ -39,12 +39,12 @@ const items = [
 ---
 
 {items.length > 0 && (
-<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+<div class="page-list-grid">
   {items.map((item) => {
     const external = /^https?:\/\//.test(item.url);
     return (
       <a class="h-full no-underline" href={item.url} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-        <div class="card card-md h-full border-3 border-transparent bg-base-200 shadow-sm transition-colors hover:border-[var(--color-header-bg)]">
+        <div class="page-list-card">
           <div class="card-body">
             <h2 class="card-title">{item.title}</h2>
             {item.description && <p>{item.description}</p>}
